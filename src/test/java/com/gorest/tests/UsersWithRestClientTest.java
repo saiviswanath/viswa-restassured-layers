@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.gorest.app.flows.GoRestCreateUser;
 import com.gorest.app.pojo.UserPOJO;
 import com.framework.core.asserts.Asserts;
+import com.framework.core.api.restclient.ResponseBodyParse;
 import com.framework.core.api.restclient.ResponseBodyParser;
 import com.framework.core.report.TestNGListener;
 import com.framework.core.utils.helper.RandomEmailGenerator;
@@ -204,5 +205,38 @@ public class UsersWithRestClientTest extends BaseTest{
 
         // Validate Headers are not present
         GoRestValidation.validatePaginationHeadersNotPresent(createUserResponse);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Test(groups = {"smoke","regression"} )
+    public void listAllUsersTestWithRespClazz(){
+        ResponseFetcher response = request.createRequest().get();
+
+        //Validate status code
+        Asserts.assertEquals(response.getStatusCode(), HttpStatusCode.OK_200.getCode(),"Validate status code");
+
+        //Validate headers
+        GoRestValidation.validateConTentType(response);
+        GoRestValidation.validatePaginationHeaders(response);
+
+        @SuppressWarnings("unchecked")
+		ResponseBodyParse<?> responseBodyParse = response.getResponseBodyParse((Class<List<UserPOJO>>)(Object)List.class);
+
+        //Validate number of users on a result page
+        int paginationLimit = Integer.parseInt(response.getHeader("x-pagination-limit"));
+        int paginationTotal = Integer.parseInt(response.getHeader("x-pagination-total"));
+        //Get the count of users in response
+        @SuppressWarnings("unchecked")
+		int userCount = ((List<UserPOJO>)responseBodyParse.getResponse()).size();
+
+        if(paginationTotal > 10){
+            Asserts.assertEquals(userCount,paginationLimit,"Validate userCount is same as paginationLimit when total user count is greater than 10");
+        }
+        else{
+            Asserts.assertEquals(userCount,paginationTotal,"Validate userCount is same as paginationTotal when total user count is less than 10");
+        }
+
+        //Validate user has fields
+        GoRestValidation.validateUserFieldsResponseBodyClazz(((List<UserPOJO>)responseBodyParse.getResponse()));
     }
 }

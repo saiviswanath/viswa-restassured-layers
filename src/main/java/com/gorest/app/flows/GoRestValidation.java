@@ -1,8 +1,12 @@
 package com.gorest.app.flows;
 
+import java.util.List;
+
 import com.framework.core.api.restclient.ResponseBodyParser;
 import com.framework.core.api.restclient.ResponseFetcher;
 import com.framework.core.asserts.Asserts;
+import com.gorest.app.pojo.UserPOJO;
+
 import io.restassured.http.Headers;
 
 public class GoRestValidation {
@@ -32,5 +36,13 @@ public class GoRestValidation {
         Asserts.assertTrue(responseBodyParser.get("email").toString().length() > 0,"Validate response body has email field");
         Asserts.assertTrue(responseBodyParser.get("gender").toString().length() > 0,"Validate response body has gender field");
         Asserts.assertTrue(responseBodyParser.get("status").toString().length() > 0,"Validate response body has status");
+    }
+    
+    public static void validateUserFieldsResponseBodyClazz(List<UserPOJO> resp){
+        Asserts.assertTrue(resp.size() > 0,"Validate response body array size");
+        Asserts.assertTrue(resp.get(0).getName().length() > 0,"Validate response body has name field");
+        Asserts.assertTrue(resp.get(0).getEmail().length() > 0,"Validate response body has email field");
+        Asserts.assertTrue(resp.get(0).getGender().length() > 0,"Validate response body has gender field");
+        Asserts.assertTrue(resp.get(0).getStatus().length() > 0,"Validate response body has status");
     }
 }

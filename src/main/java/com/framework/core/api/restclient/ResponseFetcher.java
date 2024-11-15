@@ -26,6 +26,11 @@ public class ResponseFetcher {
     public ResponseBodyParser getResponseBodyParser(){
         return new ResponseBodyParser(response);
     }
+    
+    public ResponseBodyParse<?> getResponseBodyParse(Class<?> clazz){
+        return new ResponseBodyParse<>(response, clazz);
+    }
+    
     public String getResponseBody(){
         return response.getBody().toString();
     }
