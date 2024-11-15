@@ -1,5 +1,6 @@
 package com.gorest.app.flows;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.framework.core.api.restclient.ResponseBodyParser;
@@ -38,11 +39,15 @@ public class GoRestValidation {
         Asserts.assertTrue(responseBodyParser.get("status").toString().length() > 0,"Validate response body has status");
     }
     
-    public static void validateUserFieldsResponseBodyClazz(List<UserPOJO> resp){
+    public static void validateUserFieldsResponseBodyClazz(List<LinkedHashMap<String, String>> resp){
         Asserts.assertTrue(resp.size() > 0,"Validate response body array size");
-        Asserts.assertTrue(resp.get(0).getName().length() > 0,"Validate response body has name field");
-        Asserts.assertTrue(resp.get(0).getEmail().length() > 0,"Validate response body has email field");
-        Asserts.assertTrue(resp.get(0).getGender().length() > 0,"Validate response body has gender field");
-        Asserts.assertTrue(resp.get(0).getStatus().length() > 0,"Validate response body has status");
+        
+        resp.forEach(pojo -> {
+        	Asserts.assertTrue(pojo.get("name").length() > 0,"Validate response body has name field");
+            Asserts.assertTrue(pojo.get("email").length() > 0,"Validate response body has email field");
+            Asserts.assertTrue(pojo.get("gender").length() > 0,"Validate response body has gender field");
+            Asserts.assertTrue(pojo.get("status").length() > 0,"Validate response body has status");
+        });
+        
     }
 }

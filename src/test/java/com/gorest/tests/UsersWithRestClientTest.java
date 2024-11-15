@@ -17,6 +17,7 @@ import com.framework.core.report.TestNGListener;
 import com.framework.core.utils.helper.RandomEmailGenerator;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -227,7 +228,7 @@ public class UsersWithRestClientTest extends BaseTest{
         int paginationTotal = Integer.parseInt(response.getHeader("x-pagination-total"));
         //Get the count of users in response
         @SuppressWarnings("unchecked")
-		int userCount = ((List<UserPOJO>)responseBodyParse.getResponse()).size();
+		int userCount = ((List<LinkedHashMap<String, String>>)responseBodyParse.getResponse()).size();
 
         if(paginationTotal > 10){
             Asserts.assertEquals(userCount,paginationLimit,"Validate userCount is same as paginationLimit when total user count is greater than 10");
@@ -237,6 +238,6 @@ public class UsersWithRestClientTest extends BaseTest{
         }
 
         //Validate user has fields
-        GoRestValidation.validateUserFieldsResponseBodyClazz(((List<UserPOJO>)responseBodyParse.getResponse()));
+        GoRestValidation.validateUserFieldsResponseBodyClazz(((List<LinkedHashMap<String, String>>)responseBodyParse.getResponse()));
     }
 }
