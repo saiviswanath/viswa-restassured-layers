@@ -8,19 +8,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.booking.app.flows.BookingCreate;
-import com.booking.app.flows.BookingCreateValidation;
 import com.booking.app.flows.GetBookings;
 import com.booking.app.flows.GetBookingsValidation;
 import com.booking.app.pojo.BookingId;
-import com.booking.app.pojo.BookingResponse;
 import com.framework.core.api.restclient.ResponseBodyParse;
 import com.framework.core.api.restclient.ResponseFetcher;
 import com.framework.core.asserts.Asserts;
 import com.framework.core.report.TestNGListener;
 import com.framework.core.utils.properties.FrameworkProperties;
 import com.framework.core.utils.testdata.ReadTestData;
-import com.gorest.app.pojo.UserPOJO;
 
 @Listeners(TestNGListener.class)
 public class GetBookingsTest extends BaseTest {
