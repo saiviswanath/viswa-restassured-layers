@@ -6,7 +6,7 @@ import com.framework.core.api.restclient.ResponseFetcher;
 import com.framework.core.utils.properties.PropertiesUtils;
 
 public class Authenticate {
-	public static ResponseFetcher createBooking(PropertiesUtils properties){
+	public static ResponseFetcher authForBooking(PropertiesUtils properties){
         RequestParam request;
         request = new RequestParam(properties.getProperty("baseUri"),properties.getProperty("authBasePath"));
         
