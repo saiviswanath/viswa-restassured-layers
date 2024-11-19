@@ -9,7 +9,7 @@
     <test name="CreateBookingTest">
         <groups>
             <run>
-                <include name="regression"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>
@@ -19,7 +19,7 @@
         <test name="GetBookingsTest">
         <groups>
             <run>
-                <include name="regression"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>
@@ -29,7 +29,7 @@
         <test name="GetBookingByIdTest">
         <groups>
             <run>
-                <include name="regression"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>
@@ -39,7 +39,7 @@
         <test name="BookingUpdateByNameTest">
         <groups>
             <run>
-                <include name="regression"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>

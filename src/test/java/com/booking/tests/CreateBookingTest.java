@@ -29,7 +29,7 @@ public class CreateBookingTest extends BaseTest {
 	        return ReadTestData.readTestData(createBookingTestDataFilePath);
 	    }
 	   
-	   @Test(groups = {"regression"},dataProvider = "create_booking_test_data")
+	   @Test(groups = {"smoke", "regression"},dataProvider = "create_booking_test_data")
 	    public void createBookingTest(HashMap<String, String> testData) {
 	        String firstname = testData.get("firstname");
 	        String lastname = testData.get("lastname");

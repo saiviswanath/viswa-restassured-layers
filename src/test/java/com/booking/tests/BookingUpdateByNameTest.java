@@ -35,7 +35,7 @@ public class BookingUpdateByNameTest extends BaseTest {
 	        return ReadTestData.readTestData(parUpdateBookingTestDataFilePath);
 	    }
 	   
-	   @Test(groups = {"regression"},dataProvider = "parupdate_booking_test_data")
+	   @Test(groups = {"smoke", "regression"},dataProvider = "parupdate_booking_test_data")
 	    public void parUpdateByNameBookingTest(HashMap<String, String> testData) {
 		   	String bookingid = testData.get("bookingid");
 	        String firstname = testData.get("firstname");

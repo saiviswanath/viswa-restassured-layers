@@ -29,7 +29,7 @@ public class GetBookingByIdTest extends BaseTest {
 	        return ReadTestData.readTestData(getBookingByidTestDataFilePath);
 	    }
 	   
-	@Test(groups = {"regression"},dataProvider = "get_bookingbyid_test_data")
+	@Test(groups = {"smoke", "regression"},dataProvider = "get_bookingbyid_test_data")
 	    public void getBookingByIdTest(HashMap<String, String> testData) {
 	        String bookingid = testData.get("bookingid");
 	        ResponseFetcher getBookingByIdResponse = GetBookingById.getBookings(properties, bookingid);

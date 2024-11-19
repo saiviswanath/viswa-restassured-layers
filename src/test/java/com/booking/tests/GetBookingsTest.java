@@ -32,7 +32,7 @@ public class GetBookingsTest extends BaseTest {
 	    }
 	   
 	   @SuppressWarnings("unchecked")
-	@Test(groups = {"regression"},dataProvider = "get_bookings_test_data")
+	@Test(groups = {"smoke", "regression"},dataProvider = "get_bookings_test_data")
 	    public void getBookingsTest(HashMap<String, String> testData) {
 	        String firstname = testData.get("firstname");
 	        String lastname = testData.get("lastname");
