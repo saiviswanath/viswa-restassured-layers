@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.framework.core.utils.files.FileUtils;
+import com.framework.core.utils.helper.MiscUtilities;
 import com.framework.core.utils.properties.FrameworkProperties;
 
 
@@ -21,13 +22,20 @@ public class ExtentReport extends Report{
         String extentReportSubDir = FrameworkProperties.getFrameworkProperties().getProperty("extentReportSubDir");
         String extentReportDir = reportDir + extentReportSubDir;
         FileUtils.createDir(extentReportDir);
+        
+        reportFileName = "LocalRun_";
+
+        reportFileName = MiscUtilities.dateFormat("T+0", "MM_dd_yyyy") + "\\" + reportFileName
+				+ MiscUtilities.dateFormat("T+0", "MM_dd_yyyy") + "_"
+				+ MiscUtilities.getTimeStamp("local").replace("-", "").replace(":", "");
+        
         String htmlReportFileName =  extentReportDir + reportFileName + ".html";
         extentReports = new ExtentReports();
         ExtentSparkReporter reporter = new ExtentSparkReporter(htmlReportFileName);
         reporter.config().setReportName("API Test Results");
         extentReports.attachReporter(reporter);
-        extentReports.setSystemInfo("System", "MAC");
-        extentReports.setSystemInfo("Author", "Subodh");
+        extentReports.setSystemInfo("System", "Winows");
+        extentReports.setSystemInfo("Author", "Viswa");
         extentReports.setSystemInfo("Team", "QA Team");
     }
 
