@@ -20,4 +20,16 @@ public class BookingCreate {
         request.setRequestBody(booking);
         return request.createRequest().post();
     }
+	
+	public static ResponseFetcher createBookingWithMissingContentType(PropertiesUtils properties, String firstname, String lastname,
+			long totalprice, boolean depositpaid, String checkin, String checkout, String addionalneeds){
+        RequestParam request;
+        request = new RequestParam(properties.getProperty("baseUri"),properties.getProperty("usersBasePath"));
+        
+        BookingDates dates = new BookingDates(checkin, checkout);
+        Booking booking = new Booking(firstname, lastname, totalprice, depositpaid, dates, addionalneeds);
+
+        request.setRequestBody(booking);
+        return request.createRequest().post();
+    }
 }

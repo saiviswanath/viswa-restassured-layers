@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <suiteXmlFile>gorest/gorest_testng_smoke.xml</suiteXmlFile>
+        <suiteXmlFile>booking/booking-testng.xml</suiteXmlFile>
     </properties>
 
     <build>

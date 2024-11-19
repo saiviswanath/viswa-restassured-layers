@@ -49,4 +49,20 @@ public class CreateBookingTest extends BaseTest {
 	        BookingCreateValidation.validateCreateBookingResponseBodyFields((BookingResponse)responseBodyParse.getResponse());
 	        
 	    }
+	   
+	   @Test(groups = {"regression"},dataProvider = "create_booking_test_data")
+	    public void createBookingWithMissingContentTypeTest(HashMap<String, String> testData) {
+	        String firstname = testData.get("firstname");
+	        String lastname = testData.get("lastname");
+	        long totalprice = Long.parseLong(testData.get("totalprice"));
+	        boolean depositpaid = Boolean.parseBoolean(testData.get("depositpaid"));
+	        String additionalneeds = testData.get("additionalneeds");
+	        String bookingdatescheckin = testData.get("bookingdatescheckin");
+	        String bookingdatescheckout = testData.get("bookingdatescheckout");
+	        
+	        ResponseFetcher createBookingResponse = BookingCreate.createBookingWithMissingContentType(properties, firstname, lastname, totalprice, depositpaid, bookingdatescheckin, bookingdatescheckout, additionalneeds);
+	        //Validate status code
+	        Asserts.assertEquals(createBookingResponse.getStatusCode(),500,"Validate status code");
+	        
+	    }
 }

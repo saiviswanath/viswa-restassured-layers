@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BookingSuite">
+    <listeners>
+        <listener class-name="com.framework.core.report.TestNGListener" />
+    </listeners>
+
+    <parameter name="envName" value="qa" />
+
+    <test name="BookingTests">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.booking.tests.CreateBookingTest" />
+        </classes>
+    </test>
+</suite>
