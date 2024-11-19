@@ -6,7 +6,7 @@
 
     <parameter name="envName" value="qa" />
 
-    <test name="BookingTests">
+    <test name="CreateBookingTest">
         <groups>
             <run>
                 <include name="regression"/>
@@ -14,9 +14,37 @@
         </groups>
         <classes>
             <class name="com.booking.tests.CreateBookingTest" />
+        </classes>
+    </test>
+        <test name="GetBookingsTest">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
             <class name="com.booking.tests.GetBookingsTest" />
+        </classes>
+    </test>
+        <test name="GetBookingByIdTest">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
             <class name="com.booking.tests.GetBookingByIdTest" />
+        </classes>
+    </test>
+        <test name="BookingUpdateByNameTest">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
             <class name="com.booking.tests.BookingUpdateByNameTest" />
         </classes>
     </test>
+    
 </suite>
