@@ -23,7 +23,7 @@ public class ExtentReport extends Report{
         String extentReportDir = reportDir + extentReportSubDir;
         FileUtils.createDir(extentReportDir);
         
-        reportFileName = "LocalRun_";
+        reportFileName = "Run_";
 
         reportFileName = MiscUtilities.dateFormat("T+0", "MM_dd_yyyy") + "\\" + reportFileName
 				+ MiscUtilities.dateFormat("T+0", "MM_dd_yyyy") + "_"
@@ -34,7 +34,7 @@ public class ExtentReport extends Report{
         ExtentSparkReporter reporter = new ExtentSparkReporter(htmlReportFileName);
         reporter.config().setReportName("API Test Results");
         extentReports.attachReporter(reporter);
-        extentReports.setSystemInfo("System", "Winows");
+        extentReports.setSystemInfo("System", "Windows");
         extentReports.setSystemInfo("Author", "Viswa");
         extentReports.setSystemInfo("Team", "QA Team");
     }

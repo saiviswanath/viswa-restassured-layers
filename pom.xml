@@ -11,7 +11,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <suiteXmlFile>booking/booking-testng.xml</suiteXmlFile>
+        <suiteXmlFile1>booking/booking-testng.xml</suiteXmlFile1>
+        <suiteXmlFile2>gorest/gorest_testng_regression.xml</suiteXmlFile2>
     </properties>
 
     <build>
@@ -32,7 +33,8 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng/${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/testng/${suiteXmlFile1}</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/testng/${suiteXmlFile2}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

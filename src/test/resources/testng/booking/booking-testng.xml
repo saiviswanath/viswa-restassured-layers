@@ -14,6 +14,9 @@
         </groups>
         <classes>
             <class name="com.booking.tests.CreateBookingTest" />
+            <class name="com.booking.tests.GetBookingsTest" />
+            <class name="com.booking.tests.GetBookingByIdTest" />
+            <class name="com.booking.tests.BookingUpdateByNameTest" />
         </classes>
     </test>
 </suite>
