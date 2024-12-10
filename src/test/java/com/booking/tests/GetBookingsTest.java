@@ -40,6 +40,8 @@ public class GetBookingsTest extends BaseTest {
 	        ResponseFetcher getBookingsResponse = GetBookings.getBookings(properties, firstname, lastname);
 	        //Validate status code
 	        Asserts.assertEquals(getBookingsResponse.getStatusCode(),200,"Validate status code");
+	        //Validate response time
+	        Asserts.assertTrue(getBookingsResponse.getResponseTime() < 10000, "Response time less then 10sec");
 
 	        @SuppressWarnings("unchecked")
 			ResponseBodyParse<?> responseBodyParse = getBookingsResponse.getResponseBodyParse((Class<List<BookingId>>)(Object)List.class);

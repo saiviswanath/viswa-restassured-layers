@@ -47,6 +47,8 @@ public class BookingUpdateTest extends BaseTest {
 	        		totalprice, depositpaid, bookingdatescheckin, bookingdatescheckout, additionalneeds);
 	        //Validate status code
 	        Asserts.assertEquals(updateBookingResponse.getStatusCode(),200,"Validate status code");
+	        //Validate response time
+	        Asserts.assertTrue(updateBookingResponse.getResponseTime() < 10000, "Response time less then 10sec");
 
 	        ResponseBodyParse<?> responseBodyParse = updateBookingResponse.getResponseBodyParse(Booking.class);
 

@@ -42,7 +42,8 @@ public class CreateBookingTest extends BaseTest {
 	        ResponseFetcher createBookingResponse = BookingCreate.createBooking(properties, firstname, lastname, totalprice, depositpaid, bookingdatescheckin, bookingdatescheckout, additionalneeds);
 	        //Validate status code
 	        Asserts.assertEquals(createBookingResponse.getStatusCode(),200,"Validate status code");
-
+	        //Validate response time
+	        Asserts.assertTrue(createBookingResponse.getResponseTime() < 10000, "Response time less then 10sec");
 	        ResponseBodyParse<?> responseBodyParse = createBookingResponse.getResponseBodyParse(BookingResponse.class);
 
 	        //Validate user fields

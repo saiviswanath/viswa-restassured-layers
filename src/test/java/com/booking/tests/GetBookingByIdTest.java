@@ -36,7 +36,8 @@ public class GetBookingByIdTest extends BaseTest {
 	        
 	        //Validate status code
 	        Asserts.assertEquals(getBookingByIdResponse.getStatusCode(),200,"Validate status code");
-
+	        //Validate response time
+	        Asserts.assertTrue(getBookingByIdResponse.getResponseTime() < 10000, "Response time less then 10sec");
 	        @SuppressWarnings("unchecked")
 			ResponseBodyParse<?> responseBodyParse = getBookingByIdResponse.getResponseBodyParse(Booking.class);
 

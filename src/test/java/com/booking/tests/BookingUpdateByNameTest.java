@@ -48,6 +48,8 @@ public class BookingUpdateByNameTest extends BaseTest {
 	        ResponseFetcher parUpateByNameBookingResponse = BookingUpdateByName.bookingUpdateByName(properties, authResp.getToken(), bookingid, firstname, lastname);
 	        //Validate status code
 	        Asserts.assertEquals(parUpateByNameBookingResponse.getStatusCode(),200,"Validate status code");
+	        //Validate response time
+	        Asserts.assertTrue(parUpateByNameBookingResponse.getResponseTime() < 10000, "Response time less then 10sec");
 
 	        ResponseBodyParse<?> responseBodyParse = parUpateByNameBookingResponse.getResponseBodyParse(Booking.class);
 

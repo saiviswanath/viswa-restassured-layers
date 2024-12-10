@@ -1,5 +1,10 @@
 package com.framework.core.api.restclient;
 
+import java.util.concurrent.TimeUnit;
+
+import com.framework.core.report.ReportLevel;
+import com.framework.core.report.ReporterUtils;
+
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 
@@ -36,5 +41,9 @@ public class ResponseFetcher {
     }
     public String getResponseCookie(String cookieName){
         return response.cookie(cookieName);
+    }
+    
+    public long getResponseTime() {
+    	return response.getTime();
     }
 }
